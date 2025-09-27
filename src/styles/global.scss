@@ -1,0 +1,24 @@
+@use './fonts.scss';
+@use 'variables';
+@use 'mixins';
+
+html {
+  font-family: var(--font-family-base);
+  line-height: var(--line-height-normal);
+}
+
+body {
+  background-color: var(--color-bg-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+}
+
+/* Typography */
+h1, h2, h3 {
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+}
+
+h1 { font-size: var(--font-size-xl); font-weight: var(--font-weight-semibold); }
+h2 { font-size: var(--font-size-base); line-height: var(--line-height-normal);}
+h3 { font-size: var(--font-size-sm); }
