@@ -4,8 +4,10 @@ import { mount } from '@vue/test-utils'
 import App from '../App.vue'
 
 describe('App', () => {
-  it('mounts renders properly', () => {
+  it('mounts and renders properly', () => {
     const wrapper = mount(App)
-    expect(wrapper.text()).toContain('You did it!')
+    expect(wrapper.exists()).toBe(true)
+    expect(wrapper.find('button').exists()).toBe(true)
+    expect(wrapper.find('p').text()).toBe('0')
   })
 })
