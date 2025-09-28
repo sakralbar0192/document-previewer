@@ -2,7 +2,7 @@
 import { setupWorker } from 'msw/browser'
 
 export async function enableMockServiceWorker() {
-  // Включаем моки только в development и если явно разрешено
+  // Включаем моки если явно разрешено
   if (import.meta.env['VITE_USE_MOCKS'] === 'true') {
     try {
       const { handlers } = await import('@/mocks/handlers')

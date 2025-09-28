@@ -23,12 +23,10 @@ const mockDocuments = [
   { id: 20, name: 'Технико-экономическое обоснование', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop' }
 ]
 
-export const handlers = [
-  http.get('https://test-app-csm.up.railway.app/user/docs', () =>
-    HttpResponse.json(mockDocuments)
-  ),
+const apiUrl = import.meta.env['VITE_API_BASE_URL'] || '/'
 
-  http.get('https://test-app-csm.up.railway.app/user/docs', ({ request }) => {
+export const handlers = [
+  http.get(`${apiUrl}/user/docs`, ({ request }) => {
     const url = new URL(request.url)
     const search = url.searchParams.get('search')
     const filtered = search ? mockDocuments.filter(doc =>
@@ -38,7 +36,7 @@ export const handlers = [
     return HttpResponse.json(filtered)
   }),
 
-  http.delete('https://test-app-csm.up.railway.app/user/docs/:id', () =>
+  http.delete(`${apiUrl}/user/docs/:id`, () =>
     HttpResponse.json({ success: true })
   )
 ]

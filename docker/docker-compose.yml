@@ -8,5 +8,5 @@ services:
     volumes:
       - ..:/app
       - /app/node_modules
-    environment:
-      - VITE_USE_MOCKS=true
+    env_file:
+      - ../.env.development
