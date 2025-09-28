@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { documentsService } from '../services/documentsService'
 import type { Document } from '../types/document'
+import type { PersistenceOptions } from 'pinia-plugin-persistedstate'
 
 export const useDocumentsStore = defineStore('documents', () => {
   const documents = ref<Document[]>([])
@@ -88,5 +89,5 @@ export const useDocumentsStore = defineStore('documents', () => {
 }, {
   persist: {
     pick: ['searchQuery'],
-  },
+  } as PersistenceOptions,
 })

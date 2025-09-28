@@ -19,7 +19,8 @@
     "stylelint": "stylelint \"**/*.{scss,css}\" --fix",
     "stylelint:check": "stylelint \"**/*.{scss,css}\"",
     "prepare": "husky",
-    "quality": "bun scripts/quality-check.js"
+    "quality": "bun scripts/quality-check.js",
+    "deploy": "gh-pages -d dist"
   },
   "lint-staged": {
     "*.{js,ts,vue}": [
@@ -38,7 +39,6 @@
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
-    "msw": "^2.11.3",
     "@commitlint/cli": "^20.0.0",
     "@commitlint/config-conventional": "^20.0.0",
     "@playwright/test": "^1.54.1",
@@ -56,11 +56,13 @@
     "eslint-plugin-playwright": "^2.2.0",
     "eslint-plugin-vue": "~10.3.0",
     "eslint-plugin-vuejs-accessibility": "^2.4.1",
+    "gh-pages": "^6.3.0",
     "husky": "^9.1.7",
     "jiti": "^2.4.2",
     "jsdom": "^27.0.0",
     "lint-staged": "^16.2.1",
     "modern-normalize": "^3.0.1",
+    "msw": "^2.11.3",
     "npm-run-all2": "^8.0.4",
     "postcss-html": "^1.8.0",
     "sass": "^1.93.2",
