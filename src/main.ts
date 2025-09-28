@@ -1,22 +1,17 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+import { enableMockServer, enableMockServiceWorker } from './plugins/msw'
+import i18n from './plugins/i18n'
 
 import App from './App.vue'
 import router from './router'
 
 import 'modern-normalize/modern-normalize.css'
 import './styles/global.scss'
-import { enableMockServer, enableMockServiceWorker } from './plugins/msw'
 
-// Initialize MSW based on environment
-if (typeof window !== 'undefined') {
-  // Browser environment - use Service Worker
-  await enableMockServiceWorker()
-} else {
-  // Node.js environment (Docker, tests) - use MSW server
-  await enableMockServer()
-}
+if (typeof window !== 'undefined') await enableMockServiceWorker()
+else await enableMockServer()
 
 // Инициализация приложения
 async function initializeApp() {
@@ -27,6 +22,7 @@ async function initializeApp() {
 
   app.use(pinia)
   app.use(router)
+  app.use(i18n)
 
   app.mount('#app')
 }

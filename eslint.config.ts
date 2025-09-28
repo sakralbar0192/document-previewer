@@ -63,6 +63,9 @@ export default defineConfigWithVueTs(
       'prefer-const': 'error',
       'no-var': 'error',
 
+      // Whitespace rules
+      'no-trailing-spaces': 'error',
+
     },
   },
 )

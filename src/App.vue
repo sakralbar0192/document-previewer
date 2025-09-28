@@ -2,6 +2,7 @@
 import { onMounted } from 'vue'
 import { useCounterStore } from './stores/counter'
 import { storeToRefs } from 'pinia'
+import LanguageSwitcher from '@/components/LanguageSwitcher.vue'
 
 const store = useCounterStore()
 
@@ -19,5 +20,7 @@ onMounted(async () => {
   <p>
     {{count}}
   </p>
-  <button  @click="increment">increment</button>
+  <button @click="increment">{{$t('common.loading')}}</button>
+
+  <LanguageSwitcher />
 </template>
