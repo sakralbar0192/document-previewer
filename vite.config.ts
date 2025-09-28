@@ -24,7 +24,6 @@ export default defineConfig(({ mode }) => ({
         },
       },
     },
-    copyPublicDir: mode === 'production' ? false : true,
   },
   resolve: {
     alias: {

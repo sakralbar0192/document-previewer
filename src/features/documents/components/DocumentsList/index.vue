@@ -1,6 +1,5 @@
 <template>
   <div v-if="!!searchQuery" :class="styles['documents-list']">
-    {{ searchQuery }}
     <h2>{{ $t('pages.documents.list.title') }}</h2>
 
     <Loader
