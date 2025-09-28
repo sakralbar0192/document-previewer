@@ -1,4 +1,4 @@
-@use '../variables' as *;
+@use '@/styles/variables' as *;
 
 .documents-page {
   display: flex;
@@ -20,8 +20,8 @@
   }
 
   @media (min-width: #{$desktop-min}) {
-    padding: 40px 50px;
-    gap: 35px
+    padding: 45px 50px;
+    gap: 38px
   }
 
   &__header {
@@ -39,12 +39,8 @@
   }
 
   &__sidebar {
-    @media (max-width: #{$mobile-max}) {
-      display: none;
-    }
-
     @media (min-width: #{$tablet-min}) and (max-width: #{$tablet-max}) {
-      width: auto;
+      max-width: 50%;
     }
 
     @media (min-width: #{$desktop-min}) {
@@ -56,13 +52,51 @@
     flex-grow: 1;
     border-left: 1px solid $color-border-secondary;
 
-
     @media (max-width: #{$mobile-max}) {
       max-width: 100%;
     }
 
     @media (min-width: #{$tablet-min}) {
       max-width: 100%;
+    }
+  }
+
+  &__mobile-menu-btn {
+    display: none;
+    padding: 0.5rem;
+    border: none;
+    background: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-right: 1rem;
+
+    @media (max-width: #{$mobile-max}) {
+      display: block;
+    }
+
+    &:hover {
+      background: rgb(0 0 0 / 10%);
+      border-radius: 4px;
+    }
+  }
+
+  &__mobile-overlay {
+    display: none;
+
+    @media (max-width: #{$mobile-max}) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: rgb(0 0 0 / 50%);
+      z-index: 999;
+
+      &:focus {
+        outline: 2px solid $color-primary;
+        outline-offset: -2px;
+      }
     }
   }
 }

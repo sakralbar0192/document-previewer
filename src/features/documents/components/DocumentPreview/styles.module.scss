@@ -8,18 +8,40 @@
   background: $color-bg-secondary;
 
   &__content {
-    display: flex;
-    gap: 60px;
     align-items: flex-start;
+
+    @media (max-width: #{$mobile-max}) {
+      padding: 24px 16px;
+    }
+
+    @media (min-width: #{$tablet-min}) and (max-width: #{$tablet-max}) {
+      display: flex;
+      flex-direction: column;
+    }
+
+    @media (min-width: #{$desktop-min}) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
   }
 
   &__image {
     @include flex-center;
 
-    width: 424px;
-    height: 286px;
+    width: 100%;
+    max-height: 286px;
     overflow: hidden;
     border: 1px solid $color-border-secondary;
+
+    @media (max-width: #{$tablet-max}) {
+      margin-bottom: 24px;
+      padding: 20px;
+    }
+
+    @media (min-width: #{$desktop-min}) {
+      height: 100%;
+    }
   }
 
   &__main {

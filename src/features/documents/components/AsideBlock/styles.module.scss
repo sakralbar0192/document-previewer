@@ -1,6 +1,42 @@
+@use '@/styles/variables' as *;
+
 .aside-block {
   display: flex;
   flex-direction: column;
-  padding: 27px 20px;
+  padding: 27px 0;
   gap: 30px;
+
+  @media (max-width: #{$mobile-max}) {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 85%;
+    max-width: 360px;
+    height: 100vh;
+    background: $color-bg-primary;
+    z-index: 1000;
+    transition: left 0.3s ease;
+    box-shadow: 2px 0 10px rgb(0 0 0 / 10%);
+    overflow-y: auto;
+
+    &--mobile-open {
+      left: 0;
+    }
+  }
+
+  @media (min-width: #{$tablet-min}) {
+    position: static;
+    width: auto;
+    height: auto;
+    background: transparent;
+    box-shadow: none;
+    overflow-y: visible;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    height: 100%;
+  }
 }

@@ -1,9 +1,9 @@
 <template>
   <div v-if="searchQuery" :class="styles['documents-list']">
-    <h2>Documents</h2>
+    <h2>{{ $t('pages.documents.list.title') }}</h2>
 
     <div v-if="!documents.length" :class="styles['documents-list__empty']">
-      <span>No documents found</span>
+      <span>{{ $t('pages.documents.list.no-found') }}</span>
     </div>
 
     <ul v-else
@@ -33,6 +33,11 @@ import { useDocumentsStore } from '../../stores/documentsStore'
 import type { Document } from '../../types/document'
 import styles from './styles.module.scss'
 
+interface Emits {
+  (e: 'documentSelected'): void
+}
+
+const emit = defineEmits<Emits>()
 const documentsStore = useDocumentsStore()
 
 const documents = computed(() => documentsStore.documents)
@@ -41,5 +46,6 @@ const searchQuery = computed(() => documentsStore.searchQuery)
 
 const selectDocument = (document: Document) => {
   documentsStore.selectDocument(document)
+  emit('documentSelected')
 }
 </script>
