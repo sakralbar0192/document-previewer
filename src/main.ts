@@ -10,9 +10,9 @@ import router from './router'
 import 'modern-normalize/modern-normalize.css'
 import './styles/global.scss'
 
-if (typeof window !== 'undefined') {
+if (typeof window !== 'undefined' && import.meta.env.DEV) {
   await enableMockServiceWorker()
-} else {
+} else if (typeof window === 'undefined') {
   await enableMockServer()
 }
 

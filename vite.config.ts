@@ -10,12 +10,6 @@ export default defineConfig(({ mode }) => ({
     vue(),
     vueDevTools(),
   ],
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-      'documents': fileURLToPath(new URL('./src/features/documents', import.meta.url)),
-    },
-  },
   build: {
     rollupOptions: {
       external: (id) => {
@@ -29,6 +23,13 @@ export default defineConfig(({ mode }) => ({
           vendor: ['vue', 'pinia', 'vue-router', 'vue-i18n'],
         },
       },
+    },
+    copyPublicDir: mode === 'production' ? false : true,
+  },
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      'documents': fileURLToPath(new URL('./src/features/documents', import.meta.url)),
     },
   },
   optimizeDeps: {
