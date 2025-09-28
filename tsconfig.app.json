@@ -15,7 +15,8 @@
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitOverride": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "documents/*": ["./src/features/documents/*"]
     }
   }
 }

@@ -4,7 +4,8 @@
     "language": "Language"
   },
   "search": {
-    "placeholder": "Enter the document ID"
+    "placeholder": "Enter the document ID",
+    "title": "Document search"
   },
   "pages": {
     "documents": {

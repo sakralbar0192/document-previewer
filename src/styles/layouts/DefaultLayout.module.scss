@@ -27,18 +27,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    @media (max-width: #{$mobile-max}) {
-      padding-bottom: 30px;
-    }
-
-    @media (min-width: #{$tablet-min}) and (max-width: #{$tablet-max}) {
-      padding-bottom: 30px;
-    }
-
-    @media (min-width: #{$desktop-min}) {
-      padding-bottom: 40px;
-    }
   }
 
   &__main {
@@ -47,6 +35,7 @@
     background-color: $color-bg-tertiary;
     box-shadow: $shadow-main;
     border-radius: $border-radius-md;
+    max-height: 575px;
   }
 
   &__sidebar {

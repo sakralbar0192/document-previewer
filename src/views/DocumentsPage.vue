@@ -1,8 +1,7 @@
 <template>
   <DefaultLayout>
     <template #aside>
-      <DocumentSearch/>
-      <DocumentsList/>
+      <AsideBlock/>
     </template>
     <template #content>
       <DocumentPreview :document="null"/>
@@ -11,8 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import DocumentSearch from '@/features/documents/components/DocumentSearch.vue'
-import DocumentsList from '@/features/documents/components/DocumentsList.vue'
-import DocumentPreview from '@/features/documents/components/DocumentPreview.vue'
+import DocumentPreview from 'documents/components/DocumentPreview/index.vue'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
+import AsideBlock from 'documents/components/AsideBlock/index.vue'
 </script>

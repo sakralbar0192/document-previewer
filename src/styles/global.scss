@@ -15,8 +15,9 @@ body {
 
 /* Typography */
 h1, h2, h3 {
-  font-weight: $font-weight-semibold;
+  margin: 0;
   line-height: $line-height-tight;
+  font-weight: $font-weight-semibold;
 }
 
 h1 {

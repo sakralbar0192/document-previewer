@@ -4,7 +4,8 @@
     "language": "Язык"
   },
   "search": {
-    "placeholder": "Введите ID документа"
+    "placeholder": "Введите ID документа",
+    "title": "Поиск документа"
   },
   "pages": {
     "documents": {

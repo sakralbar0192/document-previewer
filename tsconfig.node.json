@@ -17,6 +17,7 @@
     "types": ["node"]
   },
   "paths": {
-    "@/*": ["./src/*"]
+    "@/*": ["./src/*"],
+    "documents/*": ["./src/features/documents/*"]
   }
 }

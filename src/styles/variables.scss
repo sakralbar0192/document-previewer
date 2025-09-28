@@ -22,6 +22,8 @@
   --color-border-secondary: #6C757D;
 }
 
+$color-primary: var(--color-primary);
+$color-secondary: var(--color-secondary);
 $color-secondary: var(--color-secondary);
 $color-text-primary: var(--color-text-primary);
 $color-text-secondary: var(--color-text-secondary);
@@ -40,7 +42,7 @@ $font-weight-semibold: 600;
 $font-weight-bold: 700;
 $line-height-tight: 1;
 $line-height-normal: 1.4;
-$border-radius-sm: 8;
+$border-radius-sm: 8px;
 $border-radius-md: 10px;
 $shadow-main: 0px 0px 10px 0px rgb(0 0 0 / 10%);
 $transition-fast: 150ms ease-in-out;
