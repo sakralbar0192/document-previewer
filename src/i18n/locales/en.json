@@ -1,7 +1,12 @@
 {
   "common": {
     "loading": "Loading...",
-    "language": "Language"
+    "language": {
+      "toggle": "Toggle language"
+    },
+    "theme": {
+      "toggle": "Toggle theme"
+    }
   },
   "pages": {
     "documents": {

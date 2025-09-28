@@ -1,0 +1,33 @@
+@use '@/styles/variables' as *;
+
+.language-switcher {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid $color-border-secondary;
+  color: $color-text-primary;
+  font-size: 0.875rem;
+  border-radius: $border-radius-sm;
+  background-color: $color-bg-secondary;
+  font-weight: $font-weight-semibold;
+  cursor: pointer;
+  transition: all $transition-fast;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: $color-bg-tertiary;
+    border-color: $color-border-primary;
+    transform: scale(1.05);
+  }
+
+  &:focus {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}

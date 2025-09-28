@@ -2,7 +2,6 @@ import { createI18n } from 'vue-i18n'
 import en from '@/i18n/locales/en.json'
 import ru from '@/i18n/locales/ru.json'
 
-// Define message schema type for TypeScript
 type MessageSchema = typeof ru
 export type SupportedLocale = 'ru' | 'en'
 export const STORAGE_KEY = 'app-locale'

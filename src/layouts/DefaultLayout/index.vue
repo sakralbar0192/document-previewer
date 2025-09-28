@@ -9,10 +9,10 @@
         ☰
       </button>
       <h1 :class="styles['documents-page__page-title']">{{ $t($route.meta?.['title'] as string) || $t('pages.documents.title') }}</h1>
-      <span :class="styles['documents-page__user-info']">
-        <!-- TODO delegate to userStore -->
-        Username
-      </span>
+      <div :class="styles['documents-page__controls']">
+        <LanguageSwitcher />
+        <ThemeSwitcher />
+      </div>
     </header>
 
     <main :class="styles['documents-page__main']">
@@ -37,8 +37,11 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, provide } from 'vue'
 import { useDevice } from '@/shared/composable/useDevice'
+import { useThemeStore } from '@/stores/theme'
 import styles from './styles.module.scss'
 import type { MobileAsideContext } from '@/shared/types'
+import LanguageSwitcher from '@/components/LanguageSwitcher.vue'
+import ThemeSwitcher from '@/components/ThemeSwitcher.vue'
 
 const { isMobile } = useDevice()
 const showMobileAside = ref(false)

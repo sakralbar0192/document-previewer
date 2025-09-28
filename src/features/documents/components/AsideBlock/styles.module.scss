@@ -18,9 +18,11 @@
     transition: left 0.3s ease;
     box-shadow: 2px 0 10px rgb(0 0 0 / 10%);
     overflow-y: auto;
+    visibility: hidden;
 
     &--mobile-open {
       left: 0;
+      visibility: visible;
     }
   }
 

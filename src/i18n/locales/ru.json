@@ -1,7 +1,12 @@
 {
   "common": {
     "loading": "Загрузка...",
-    "language": "Язык"
+    "language": {
+      "toggle": "Переключить язык"
+    },
+    "theme": {
+      "toggle": "Переключить тему"
+    }
   },
   "pages": {
     "documents": {

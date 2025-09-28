@@ -1,4 +1,5 @@
 @use '@/styles/variables' as *;
+@use "@/styles/mixins" as *;
 
 .documents-page {
   display: flex;
@@ -20,14 +21,25 @@
   }
 
   @media (min-width: #{$desktop-min}) {
-    padding: 45px 50px;
-    gap: 38px
+    padding: 40px 50px;
+    gap: 37px
   }
 
   &__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
+
+    @media (max-width: #{$mobile-max}) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   &__main {
@@ -62,10 +74,13 @@
   }
 
   &__mobile-menu-btn {
+    @include focus-visible;
+
     display: none;
     padding: 0.5rem;
     border: none;
     background: none;
+    color: $color-text-primary;
     font-size: 1.5rem;
     cursor: pointer;
     margin-right: 1rem;
