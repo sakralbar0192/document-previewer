@@ -2,6 +2,13 @@ export default {
   extends: [
     'stylelint-config-standard-scss',
   ],
+  ignoreFiles: [
+    'dist/**/*',
+    'build/**/*',
+    'coverage/**/*',
+    'node_modules/**/*',
+    '**/*.min.css',
+  ],
   plugins: ['stylelint-order'],
   rules: {
     'selector-class-pattern': '^[a-z][a-zA-Z0-9]*(-[a-zA-Z0-9]+)*(__[a-zA-Z0-9]+(-[a-zA-Z0-9]+)*)*(--[a-zA-Z0-9]+(-[a-zA-Z0-9]+)*)*$|^[a-z][a-zA-Z0-9]*(-[a-zA-Z0-9]+)*$',

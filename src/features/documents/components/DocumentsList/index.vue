@@ -1,8 +1,15 @@
 <template>
-  <div v-if="searchQuery" :class="styles['documents-list']">
+  <div v-if="!!searchQuery" :class="styles['documents-list']">
+    {{ searchQuery }}
     <h2>{{ $t('pages.documents.list.title') }}</h2>
 
-    <div v-if="!documents.length" :class="styles['documents-list__empty']">
+    <Loader
+      v-if="isLoading"
+      :class="styles['documents-list__loader']"
+      :size="32"
+    />
+
+    <div v-else-if="!documents.length" :class="styles['documents-list__empty']">
       <span>{{ $t('pages.documents.list.no-found') }}</span>
     </div>
 
@@ -28,10 +35,11 @@
 
 <script setup lang="ts">
 import DocumentCard from 'documents/components/DocumentCard/index.vue'
-import { computed } from 'vue'
+import Loader from '@/components/Loader/index.vue'
 import { useDocumentsStore } from '../../stores/documentsStore'
 import type { Document } from '../../types/document'
 import styles from './styles.module.scss'
+import { storeToRefs } from 'pinia'
 
 interface Emits {
   (e: 'documentSelected'): void
@@ -40,9 +48,7 @@ interface Emits {
 const emit = defineEmits<Emits>()
 const documentsStore = useDocumentsStore()
 
-const documents = computed(() => documentsStore.documents)
-const selectedDocument = computed(() => documentsStore.selectedDocument)
-const searchQuery = computed(() => documentsStore.searchQuery)
+const { documents, selectedDocument, searchQuery, isLoading } = storeToRefs(documentsStore)
 
 const selectDocument = (document: Document) => {
   documentsStore.selectDocument(document)

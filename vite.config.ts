@@ -17,10 +17,23 @@ export default defineConfig(({ mode }) => ({
   },
   build: {
     rollupOptions: {
-      external: mode === 'production' ? ['msw'] : [],
+      external: (id) => {
+        if (mode === 'production' && id.includes('msw')) {
+          return true
+        }
+        return false
+      },
+      output: {
+        manualChunks: {
+          vendor: ['vue', 'pinia', 'vue-router', 'vue-i18n'],
+        },
+      },
     },
   },
   optimizeDeps: {
     exclude: mode === 'production' ? ['msw'] : [],
+  },
+  define: {
+    __DEV__: mode === 'development',
   },
 }))

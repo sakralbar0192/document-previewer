@@ -126,7 +126,8 @@ const mockDocuments = [
 const apiUrl = import.meta.env['VITE_API_BASE_URL'] || '/'
 
 export const handlers = [
-  http.get(`${apiUrl}/user/docs`, ({ request }) => {
+  http.get(`${apiUrl}/user/docs`, async({ request }) => {
+    await new Promise(res=> setTimeout(() => res(true), 3000))
     const url = new URL(request.url)
     const search = url.searchParams.get('search')
     const filtered = search ? mockDocuments.filter(doc =>

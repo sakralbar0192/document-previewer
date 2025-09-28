@@ -13,7 +13,7 @@
 <script setup lang="ts">
 import { useThemeStore } from '@/stores/theme'
 import { storeToRefs } from 'pinia'
-import styles from './ThemeSwitcher.module.scss'
+import styles from './styles.module.scss'
 
 const store = useThemeStore()
 const { currentTheme } = storeToRefs(store)

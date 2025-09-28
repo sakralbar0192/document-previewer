@@ -1,15 +1,37 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { mount } from '@vue/test-utils'
+import { mount, config } from '@vue/test-utils'
 import { useDocumentsStore } from '@/features/documents/stores/documentsStore'
 import type { Document } from '@/features/documents/types/document'
 import DocumentsList from '@/features/documents/components/DocumentsList/index.vue'
 
-vi.mock('@/features/documents/components/DocumentsList/components/DocumentCard/index.vue', () => ({
+// Глобальные моки для Vue Test Utils
+config.global.mocks = {
+  $t: (key: string) => {
+    const translations: Record<string, string> = {
+      'pages.documents.list.title': 'Documents',
+      'pages.documents.list.no-found': 'No documents found',
+    }
+    return translations[key] || key
+  },
+}
+
+vi.mock('@/features/documents/components/DocumentCard/index.vue', () => ({
   default: {
     name: 'DocumentCard',
     template: '<div class="document-card-mock">{{ document.name }}</div>',
     props: ['document'],
+    setup() {
+      return {}
+    },
+  },
+}))
+
+vi.mock('@/components/Loader/index.vue', () => ({
+  default: {
+    name: 'Loader',
+    template: '<div class="loader-mock">Loading...</div>',
+    props: ['visible', 'size'],
     setup() {
       return {}
     },
@@ -29,6 +51,27 @@ vi.mock('@/features/documents/components/DocumentsList/styles.module.scss', () =
 
 vi.mock('@/features/documents/stores/documentsStore', () => ({
   useDocumentsStore: vi.fn(),
+}))
+
+vi.mock('pinia', () => ({
+  storeToRefs: vi.fn((store) => ({
+    documents: store.documents,
+    selectedDocument: store.selectedDocument,
+    searchQuery: store.searchQuery,
+    isLoading: store.isLoading,
+  })),
+}))
+
+vi.mock('vue-i18n', () => ({
+  useI18n: () => ({
+    t: (key: string) => {
+      const translations: Record<string, string> = {
+        'pages.documents.list.title': 'Documents',
+        'pages.documents.list.no-found': 'No documents found',
+      }
+      return translations[key] || key
+    },
+  }),
 }))
 
 const mockUseDocumentsStore = vi.mocked(useDocumentsStore)
@@ -60,6 +103,8 @@ describe('DocumentsList', () => {
       searchDocuments: vi.fn(),
       selectDocument: vi.fn(),
       clearDocuments: vi.fn(),
+      deleteDocument: vi.fn(),
+      downloadDocument: vi.fn(),
       hasSelectedDocumentImage: false,
     } as any)
   })
@@ -90,6 +135,8 @@ describe('DocumentsList', () => {
       searchDocuments: vi.fn(),
       selectDocument: vi.fn(),
       clearDocuments: vi.fn(),
+      deleteDocument: vi.fn(),
+      downloadDocument: vi.fn(),
     } as any)
 
     const wrapper = mount(DocumentsList)
@@ -110,6 +157,8 @@ describe('DocumentsList', () => {
       searchDocuments: vi.fn(),
       selectDocument: vi.fn(),
       clearDocuments: vi.fn(),
+      deleteDocument: vi.fn(),
+      downloadDocument: vi.fn(),
     } as any)
 
     const wrapper = mount(DocumentsList)
@@ -128,6 +177,8 @@ describe('DocumentsList', () => {
       searchDocuments: vi.fn(),
       selectDocument: vi.fn(),
       clearDocuments: vi.fn(),
+      deleteDocument: vi.fn(),
+      downloadDocument: vi.fn(),
     } as any)
 
     const wrapper = mount(DocumentsList)
@@ -212,6 +263,8 @@ describe('DocumentsList', () => {
       searchDocuments: vi.fn(),
       selectDocument: vi.fn(),
       clearDocuments: vi.fn(),
+      deleteDocument: vi.fn(),
+      downloadDocument: vi.fn(),
     } as any)
 
     const wrapper = mount(DocumentsList)
@@ -231,6 +284,8 @@ describe('DocumentsList', () => {
       searchDocuments: vi.fn(),
       selectDocument: vi.fn(),
       clearDocuments: vi.fn(),
+      deleteDocument: vi.fn(),
+      downloadDocument: vi.fn(),
     } as any)
 
     const wrapper = mount(DocumentsList)
@@ -265,6 +320,8 @@ describe('DocumentsList', () => {
       searchDocuments: vi.fn(),
       selectDocument: vi.fn(),
       clearDocuments: vi.fn(),
+      deleteDocument: vi.fn(),
+      downloadDocument: vi.fn(),
     } as any)
 
     const wrapper = mount(DocumentsList)

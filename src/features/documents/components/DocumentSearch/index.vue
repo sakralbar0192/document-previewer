@@ -3,21 +3,29 @@
     <h2>
       {{t('pages.documents.search.title')}}
     </h2>
-    <input
-      :class="styles['document-search__input']"
-      ref="searchInput"
-      v-model="searchQuery"
-      type="search"
-      :placeholder="t('pages.documents.search.placeholder')"
-      :aria-label="t('pages.documents.search.placeholder')"
-      :aria-describedby="error ? 'search-error' : undefined"
-      :aria-invalid="!!error"
-      :disabled="isLoading"
-      @input="handleInput"
-      @keydown.enter="handleKeydownEnter"
-      @blur="handleBlur"
-      autocomplete="off"
-    />
+    <div :class="styles['document-search__input-wrapper']">
+      <input
+        :class="styles['document-search__input']"
+        ref="searchInput"
+        v-model="searchQuery"
+        type="search"
+        :placeholder="t('pages.documents.search.placeholder')"
+        :aria-label="t('pages.documents.search.placeholder')"
+        :aria-describedby="error ? 'search-error' : undefined"
+        :aria-invalid="!!error"
+        :disabled="isLoading"
+        @input="handleInput"
+        @keydown.enter="handleKeydownEnter"
+        @blur="handleBlur"
+        autocomplete="off"
+      />
+      <Loader
+        v-if="isLoading"
+        :class="styles['document-search__loader']"
+        :size="20"
+        aria-hidden="true"
+      />
+    </div>
   </label>
 </template>
 
@@ -25,6 +33,7 @@
 import { ref, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useDocumentSearch } from 'documents/composables/useDocumentSearch'
+import Loader from '@/components/Loader/index.vue'
 import styles from './styles.module.scss'
 
 const { t } = useI18n()

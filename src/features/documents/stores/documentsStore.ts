@@ -42,13 +42,14 @@ export const useDocumentsStore = defineStore('documents', () => {
     error.value = null
     try {
       await documentsService.deleteDocument(id)
+    } catch (err) {
+      error.value = err instanceof Error ? err.message : 'Unknown error'
+    } finally {
       documents.value = documents.value.filter(doc => doc.id !== id)
       if (selectedDocument.value?.id === id) {
         selectedDocument.value = null
       }
-    } catch (err) {
-      error.value = err instanceof Error ? err.message : 'Unknown error'
-    } finally {
+
       isLoading.value = false
     }
   }

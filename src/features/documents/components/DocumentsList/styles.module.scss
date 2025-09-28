@@ -13,6 +13,13 @@
     background-color: $color-bg-primary;
   }
 
+  &__loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+  }
+
   &__grid {
     display: flex;
     flex-direction: column;

@@ -31,17 +31,19 @@
       @keydown.escape="closeMobileAside"
       :class="styles['documents-page__mobile-overlay']"
     ></div>
+
+    <Toast />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted, provide } from 'vue'
+import { ref, computed, onMounted, provide } from 'vue'
 import { useDevice } from '@/shared/composable/useDevice'
-import { useThemeStore } from '@/stores/theme'
 import styles from './styles.module.scss'
 import type { MobileAsideContext } from '@/shared/types'
-import LanguageSwitcher from '@/components/LanguageSwitcher.vue'
-import ThemeSwitcher from '@/components/ThemeSwitcher.vue'
+import LanguageSwitcher from '@/components/LanguageSwitcher/index.vue'
+import ThemeSwitcher from '@/components/ThemeSwitcher/index.vue'
+import Toast from '@/components/Toast/index.vue'
 
 const { isMobile } = useDevice()
 const showMobileAside = ref(false)

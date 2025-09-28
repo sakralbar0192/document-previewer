@@ -12,7 +12,7 @@
 <script setup lang="ts">
 import { useLocaleStore } from '@/stores/locale'
 import { storeToRefs } from 'pinia'
-import styles from './LanguageSwitcher.module.scss'
+import styles from './styles.module.scss'
 
 const store = useLocaleStore()
 const { currentLocale } = storeToRefs(store)

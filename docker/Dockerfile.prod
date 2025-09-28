@@ -11,6 +11,9 @@ RUN bun install --production --ignore-scripts
 # Copy source code
 COPY . .
 
+# Copy production environment file
+COPY .env.production .env
+
 # Build application
 RUN bun run build-only
 

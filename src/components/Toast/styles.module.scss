@@ -1,0 +1,135 @@
+@use '@/styles/variables' as *;
+
+.toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: $z-index-modal;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.toast {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  border-radius: $border-radius-md;
+  box-shadow: $shadow-main;
+  background-color: $color-bg-secondary;
+  border: 1px solid $color-border-secondary;
+  color: $color-text-primary;
+  min-height: 60px;
+  animation: slide-in 0.3s ease-out;
+
+  &--success {
+    border-left: 4px solid #28a745;
+    background-color: rgb(40 167 69 / 10%);
+  }
+
+  &--error {
+    border-left: 4px solid $color-secondary;
+    background-color: rgb(220 53 69 / 10%);
+  }
+
+  &--warning {
+    border-left: 4px solid #ffc107;
+    background-color: rgb(255 193 7 / 10%);
+  }
+
+  &--info {
+    border-left: 4px solid $color-primary;
+    background-color: rgb(13 110 253 / 10%);
+  }
+}
+
+.toast-icon {
+  flex-shrink: 0;
+  font-size: 1.2rem;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.toast-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.toast-title {
+  color: $color-text-primary;
+  font-size: $font-size-base;
+  line-height: $line-height-tight;
+  font-weight: $font-weight-semibold;
+  margin-bottom: 4px;
+}
+
+.toast-message {
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+  line-height: $line-height-normal;
+  overflow-wrap: break-word;
+}
+
+.toast-close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: $color-text-muted;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all $transition-fast;
+
+  &:hover {
+    background-color: $color-bg-tertiary;
+    color: $color-text-primary;
+  }
+
+  &:focus {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+// Анимации
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.toast-enter-active {
+  animation: slide-in 0.3s ease-out;
+}
+
+.toast-leave-active {
+  animation: slide-in 0.3s ease-out reverse;
+}
+
+.toast-move {
+  transition: transform 0.3s ease;
+}
+
+@media (max-width: $mobile-max) {
+  .toast-container {
+    top: 20px;
+    right: 20px;
+    left: 20px;
+    max-width: none;
+  }
+}
