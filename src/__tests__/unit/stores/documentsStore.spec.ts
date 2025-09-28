@@ -8,8 +8,8 @@ vi.mock('@/features/documents/services/documentsService', () => ({
   documentsService: {
     searchDocuments: vi.fn(),
     deleteDocument: vi.fn(),
-    downloadDocument: vi.fn()
-  }
+    downloadDocument: vi.fn(),
+  },
 }))
 
 describe('DocumentsStore', () => {
@@ -27,7 +27,7 @@ describe('DocumentsStore', () => {
     expect(store.error).toBeNull()
   })
 
-  it('should search documents', async () => {
+  it('should search documents', async() => {
     const mockDocuments: Document[] = [
       {
         id: '1',
@@ -39,7 +39,7 @@ describe('DocumentsStore', () => {
         name: 'Test Document 2',
         description: 'Content 2',
         image: 'https://example.com/image.jpg',
-      }
+      },
     ]
 
     const mockSearchDocuments = vi.mocked(documentsService.searchDocuments)
@@ -55,7 +55,7 @@ describe('DocumentsStore', () => {
     expect(store.error).toBeNull()
   })
 
-  it('should handle search error', async () => {
+  it('should handle search error', async() => {
     const mockSearchDocuments = vi.mocked(documentsService.searchDocuments)
     mockSearchDocuments.mockRejectedValue(new Error('API Error'))
 
@@ -68,7 +68,7 @@ describe('DocumentsStore', () => {
     expect(store.error).toBe('API Error')
   })
 
-  it('should set loading state during search', async () => {
+  it('should set loading state during search', async() => {
     const mockSearchDocuments = vi.mocked(documentsService.searchDocuments)
     let resolvePromise: (value: Document[]) => void
     const promise = new Promise<Document[]>((resolve) => {
@@ -87,7 +87,7 @@ describe('DocumentsStore', () => {
         id: '1',
         name: 'Test Document',
         description: 'Content',
-      }
+      },
     ])
 
     await searchPromise

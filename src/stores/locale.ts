@@ -18,11 +18,11 @@ export const useLocaleStore = defineStore('locale', () => {
     locale.value = currentLocale.value
   }
 
-  return {currentLocale, setLocale, initializeFromStorage}
+  return { currentLocale, setLocale, initializeFromStorage }
 }, {
   persist: {
     key: STORAGE_KEY,
     storage: localStorage,
-    pick: ['currentLocale']
-  }
+    pick: ['currentLocale'],
+  },
 })

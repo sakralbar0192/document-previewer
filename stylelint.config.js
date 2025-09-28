@@ -1,33 +1,44 @@
 export default {
   extends: [
     'stylelint-config-standard-scss',
-    'stylelint-config-recommended-vue/scss'
   ],
+  plugins: ['stylelint-order'],
   rules: {
-    // CSS class naming pattern - kebab-case for regular classes
     'selector-class-pattern': '^[a-z][a-zA-Z0-9]*(-[a-z][a-zA-Z0-9]*)*$',
-
-    // Custom properties (CSS variables) - allow flexible naming
     'custom-property-pattern': null,
-
-    // Allow CSS custom properties in unknown properties
     'property-no-unknown': [
       true,
       {
-        ignoreProperties: ['/^--/']
-      }
+        ignoreProperties: ['/^--/'],
+      },
     ],
-
-    // No empty blocks
     'block-no-empty': true,
-
-    // Allow empty sources in Vue files
-    'no-empty-source': null,
-
-    // Color functions
     'color-function-notation': 'modern',
-
-    // Units
-    'unit-allowed-list': ['px', 'em', 'rem', '%', 'vh', 'vw', 'vmin', 'vmax', 'deg', 's', 'ms'],
-  }
+    'unit-allowed-list': ['px', 'em', 'rem', '%', 'vh', 'vw', 'vmin', 'vmax', 'deg', 's', 'ms', 'fr'],
+    'declaration-block-single-line-max-declarations': 3,
+    'order/properties-order': [
+      'position',
+      'top',
+      'right',
+      'bottom',
+      'left',
+      'display',
+      'flex-direction',
+      'justify-content',
+      'align-items',
+      'width',
+      'height',
+      'margin',
+      'padding',
+      'border',
+      'background',
+      'color',
+      'font-size',
+      'font-family',
+      'text-align',
+      'line-height',
+    ],
+    'scss/dollar-variable-pattern': '^[a-z][a-zA-Z0-9]*(-[a-z][a-zA-Z0-9]*)*$',
+    'scss/percent-placeholder-pattern': '^[a-z][a-zA-Z0-9]*(-[a-z][a-zA-Z0-9]*)*$',
+  },
 }

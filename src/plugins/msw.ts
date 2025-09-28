@@ -27,11 +27,15 @@ export async function enableMockServer() {
   if (import.meta.env['VITE_USE_MOCKS'] === 'true' && typeof window === 'undefined') {
     try {
       const { server } = await import('@/mocks/server')
-      server.listen({
-        onUnhandledRequest: 'bypass'
-      })
-      console.log('[MSW Server] Mock server started for Docker/tests')
-      return server
+      if (server) {
+        server.listen({
+          onUnhandledRequest: 'bypass',
+        })
+        console.log('[MSW Server] Mock server started for Docker/tests')
+        return server
+      }
+      console.warn('[MSW Server] Failed to start mock server:', 'Sever is null')
+
     } catch (error) {
       console.warn('[MSW Server] Failed to start mock server:', error)
     }

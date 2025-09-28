@@ -2,5 +2,13 @@
   "common": {
     "loading": "Загрузка...",
     "language": "Язык"
+  },
+  "search": {
+    "placeholder": "Введите ID документа"
+  },
+  "pages": {
+    "documents": {
+      "title": "MyApp"
+    }
   }
 }

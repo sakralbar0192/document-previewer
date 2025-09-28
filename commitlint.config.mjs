@@ -5,7 +5,7 @@ export default {
     'footer-leading-blank': [0, 'never'],
     'body-max-line-length': [0, 'never'],
     'body-min-length': [2, 'always'],
-    'body-case': [0, 'never']
+    'body-case': [0, 'never'],
   },
   plugins: [
     {
@@ -16,11 +16,11 @@ export default {
             return [false, 'Commit message must include "Time: X min" in body']
           }
           return [true]
-        }
-      }
-    }
+        },
+      },
+    },
   ],
   rules: {
-    'body-requires-time': [2, 'always']
-  }
+    'body-requires-time': [2, 'always'],
+  },
 }

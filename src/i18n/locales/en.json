@@ -2,5 +2,13 @@
   "common": {
     "loading": "Loading...",
     "language": "Language"
+  },
+  "search": {
+    "placeholder": "Enter the document ID"
+  },
+  "pages": {
+    "documents": {
+      "title": "Document Previewer"
+    }
   }
 }

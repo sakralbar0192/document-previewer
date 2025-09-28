@@ -12,5 +12,5 @@ export const useCounterStore = defineStore('counter', () => {
 }, {
   persist: {
     pick: ['count'],
-  }
+  },
 })

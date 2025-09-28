@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 
 // MSW server for Node.js environment (Docker, tests)
-let serverInstance: any = null
+let serverInstance: ReturnType<typeof import('msw/node').setupServer> | null = null
 
 // Only run in Node.js environment to avoid Vite build issues
 if (typeof window === 'undefined') {
@@ -14,7 +14,7 @@ if (typeof window === 'undefined') {
         // Start server if VITE_USE_MSW is true and we're in Node environment
         if (import.meta.env['VITE_USE_MSW'] === 'true') {
           serverInstance.listen({
-            onUnhandledRequest: 'bypass'
+            onUnhandledRequest: 'bypass',
           })
           console.log('[MSW Server] Mock server started')
         }

@@ -11,7 +11,7 @@ export class DocumentsService {
   async searchDocuments(query: string): Promise<Document[]> {
     try {
       const response = await apiClient.get<Document[]>('/user/docs', {
-        params: { search: query }
+        params: { search: query },
       })
 
       return response.data.map((doc: Document) => ({

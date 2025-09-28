@@ -10,8 +10,11 @@ import router from './router'
 import 'modern-normalize/modern-normalize.css'
 import './styles/global.scss'
 
-if (typeof window !== 'undefined') await enableMockServiceWorker()
-else await enableMockServer()
+if (typeof window !== 'undefined') {
+  await enableMockServiceWorker()
+} else {
+  await enableMockServer()
+}
 
 // Инициализация приложения
 async function initializeApp() {

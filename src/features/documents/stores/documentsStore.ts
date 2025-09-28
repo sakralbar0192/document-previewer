@@ -11,10 +11,10 @@ export const useDocumentsStore = defineStore('documents', () => {
   const error = ref<string | null>(null)
 
   const hasSelectedDocumentImage = computed(() => {
-    return selectedDocument.value?.image != null
+    return selectedDocument.value?.image !== null
   })
 
-  const searchDocuments = async (query: string) => {
+  const searchDocuments = async(query: string) => {
     isLoading.value = true
     error.value = null
     searchQuery.value = query
@@ -33,7 +33,7 @@ export const useDocumentsStore = defineStore('documents', () => {
     selectedDocument.value = document
   }
 
-  const deleteDocument = async (id: string) => {
+  const deleteDocument = async(id: string) => {
     isLoading.value = true
     error.value = null
     try {
@@ -49,7 +49,7 @@ export const useDocumentsStore = defineStore('documents', () => {
     }
   }
 
-  const downloadDocument = async (doc: Document) => {
+  const downloadDocument = async(doc: Document) => {
     try {
       const blob = await documentsService.downloadDocument(doc)
 
@@ -78,6 +78,6 @@ export const useDocumentsStore = defineStore('documents', () => {
     searchDocuments,
     selectDocument,
     deleteDocument,
-    downloadDocument
+    downloadDocument,
   }
 })

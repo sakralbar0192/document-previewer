@@ -1,0 +1,79 @@
+@use '../variables' as *;
+
+.documents-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: $desktop-max;
+  min-width: $mobile-min;
+  margin: 0 auto;
+  background-color: $color-bg-primary;
+
+  @media (max-width: #{$mobile-max}) {
+    padding: 24px 16px;
+  }
+
+  @media (min-width: #{$tablet-min}) and (max-width: #{$tablet-max}) {
+    padding: 31px 40px;
+    gap: 25px;
+  }
+
+  @media (min-width: #{$desktop-min}) {
+    padding: 40px 50px;
+    gap: 35px
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (max-width: #{$mobile-max}) {
+      padding-bottom: 30px;
+    }
+
+    @media (min-width: #{$tablet-min}) and (max-width: #{$tablet-max}) {
+      padding-bottom: 30px;
+    }
+
+    @media (min-width: #{$desktop-min}) {
+      padding-bottom: 40px;
+    }
+  }
+
+  &__main {
+    flex: 1;
+    display: flex;
+    background-color: $color-bg-tertiary;
+    box-shadow: $shadow-main;
+    border-radius: $border-radius-md;
+  }
+
+  &__sidebar {
+    @media (max-width: #{$mobile-max}) {
+      display: none;
+    }
+
+    @media (min-width: #{$tablet-min}) and (max-width: #{$tablet-max}) {
+      width: auto;
+    }
+
+    @media (min-width: #{$desktop-min}) {
+      width: 22%;
+    }
+  }
+
+  &__content {
+    flex-grow: 1;
+    border-left: 1px solid $color-border-secondary;
+
+
+    @media (max-width: #{$mobile-max}) {
+      max-width: 100%;
+    }
+
+    @media (min-width: #{$tablet-min}) {
+      max-width: 100%;
+    }
+  }
+}

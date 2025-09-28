@@ -1,58 +1,56 @@
 :root {
   --color-primary: #0D6EFD;
   --color-secondary: #DC3545;
-
-  --color-text-primary: #000000;
+  --color-text-primary: #000;
   --color-text-secondary: #212529;
   --color-text-muted: #6C757D;
-
   --color-bg-primary: #FBFBFB;
-  --color-bg-secondary: #FFFFFF;
+  --color-bg-secondary: #FFF;
   --color-bg-tertiary: #FDFDFD;
-
   --color-border-primary: #E9ECEF;
   --color-border-secondary: #E0E0E0;
-
-  --font-family-base: 'Montserrat', -apple-system, blinkmacsystemfont, 'Segoe UI', roboto, sans-serif;
-
-  --font-size-sm: 0.875rem;
-  --font-size-base: 1rem;
-  --font-size-xl: 2rem;
-
-  --font-weight-normal: 400;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
-
-  --line-height-tight: 1;
-  --line-height-normal: 1.4;
-
-  --border-radius-sm: 8;
-  --border-radius-md: 10px;
-
-  --shadow-main: 0px 0px 10px 0px rgba(0, 0, 0 / 0.1);
-
-  --transition-fast: 150ms ease-in-out;
-  --transition-normal: 300ms ease-in-out;
-  --transition-slow: 500ms ease-in-out;
-
-  --z-index-modal-overlay: 1040;
-  --z-index-modal: 1050;
 }
 
 [data-theme="dark"] {
-  --color-text-primary: #FFFFFF;
+  --color-text-primary: #FFF;
   --color-text-secondary: #E9ECEF;
   --color-text-muted: #ADB5BD;
-
   --color-bg-primary: #1E1E1E;
   --color-bg-secondary: #121212;
   --color-bg-tertiary: #2A2A2A;
-
   --color-border-primary: #495057;
   --color-border-secondary: #6C757D;
 }
 
+$color-secondary: var(--color-secondary);
+$color-text-primary: var(--color-text-primary);
+$color-text-secondary: var(--color-text-secondary);
+$color-text-muted: var(--color-text-muted);
+$color-bg-primary: var(--color-bg-primary);
+$color-bg-secondary: var(--color-bg-secondary);
+$color-bg-tertiary: var(--color-bg-tertiary);
+$color-border-primary: var(--color-border-primary);
+$color-border-secondary: var(--color-border-secondary);
+$font-family-base: 'Montserrat', -apple-system, blinkmacsystemfont, 'Segoe UI', roboto, sans-serif;
+$font-size-sm: 0.875rem;
+$font-size-base: 1rem;
+$font-size-xl: 2rem;
+$font-weight-normal: 400;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$line-height-tight: 1;
+$line-height-normal: 1.4;
+$border-radius-sm: 8;
+$border-radius-md: 10px;
+$shadow-main: 0px 0px 10px 0px rgb(0 0 0 / 10%);
+$transition-fast: 150ms ease-in-out;
+$transition-normal: 300ms ease-in-out;
+$transition-slow: 500ms ease-in-out;
+$z-index-modal-overlay: 1040;
+$z-index-modal: 1050;
+$mobile-min: 360px;
 $mobile-max: 767px;
 $tablet-min: 768px;
 $tablet-max: 1024px;
 $desktop-min: 1025px;
+$desktop-max: 1366px;
