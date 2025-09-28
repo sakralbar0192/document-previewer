@@ -1,7 +1,6 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
-import { enableMockServer, enableMockServiceWorker } from './plugins/msw'
 import i18n from './plugins/i18n'
 
 import App from './App.vue'
@@ -10,10 +9,15 @@ import router from './router'
 import 'modern-normalize/modern-normalize.css'
 import './styles/global.scss'
 
-if (typeof window !== 'undefined' && import.meta.env.DEV) {
-  await enableMockServiceWorker()
-} else if (typeof window === 'undefined') {
-  await enableMockServer()
+if (import.meta.env.DEV) {
+  const { enableMockServer, enableMockServiceWorker } = await import('@/plugins/msw')
+
+  if (typeof window !== 'undefined') {
+
+    await enableMockServiceWorker()
+  } else if (typeof window === 'undefined') {
+    await enableMockServer()
+  }
 }
 
 // Инициализация приложения
