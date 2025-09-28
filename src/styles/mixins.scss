@@ -12,3 +12,9 @@
     outline-offset: 2px;
   }
 }
+
+@mixin ellipsis-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

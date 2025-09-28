@@ -3,13 +3,17 @@
     "loading": "Loading...",
     "language": "Language"
   },
-  "search": {
-    "placeholder": "Enter the document ID",
-    "title": "Document search"
-  },
   "pages": {
     "documents": {
-      "title": "Document Previewer"
+      "title": "Document Previewer",
+      "search": {
+        "placeholder": "Enter the document ID",
+        "title": "Document search"
+      },
+      "list": {
+        "title": "Results",
+        "no-found": "Nothing was found"
+      }  
     }
   }
 }

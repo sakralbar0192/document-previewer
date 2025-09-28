@@ -3,13 +3,17 @@
     "loading": "Загрузка...",
     "language": "Язык"
   },
-  "search": {
-    "placeholder": "Введите ID документа",
-    "title": "Поиск документа"
-  },
   "pages": {
     "documents": {
-      "title": "MyApp"
+      "title": "MyApp",
+      "search": {
+        "placeholder": "Введите ID документа",
+        "title": "Поиск документа"
+      },
+      "list": {
+        "title": "Результаты",
+        "no-found": "Ничего не найдено"
+      }
     }
   }
 }

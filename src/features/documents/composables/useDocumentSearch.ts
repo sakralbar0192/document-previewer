@@ -12,7 +12,7 @@ export function useDocumentSearch(options: UseDocumentSearchOptions = {}) {
 
   const documentsStore = useDocumentsStore()
   const searchQuery = ref('')
-  const debounceTimer = ref<number | null>(null)
+  const debounceTimer = ref<ReturnType<typeof setTimeout> | null>(null)
   const lastSearchQuery = ref('')
 
   const isLoading = computed(() => documentsStore.isLoading)

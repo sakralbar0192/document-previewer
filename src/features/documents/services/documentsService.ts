@@ -18,7 +18,7 @@ export class DocumentsService {
         id: doc.id || useId(),
         name: doc.name || '',
         description: doc.description || '',
-        imageUrl: doc.image || '',
+        image: doc.image || '',
       }))
     } catch (error) {
       throw this.handleApiError(error)

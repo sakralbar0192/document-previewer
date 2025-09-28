@@ -1,15 +1,15 @@
 <template>
   <label :class="styles['document-search']">
     <h2>
-      {{$t('search.title')}}
+      {{t('pages.documents.search.title')}}
     </h2>
     <input
       :class="styles['document-search__input']"
       ref="searchInput"
       v-model="searchQuery"
       type="search"
-      :placeholder="$t('search.placeholder')"
-      :aria-label="$t('search.placeholder')"
+      :placeholder="t('pages.documents.search.placeholder')"
+      :aria-label="t('pages.documents.search.placeholder')"
       :aria-describedby="error ? 'search-error' : undefined"
       :aria-invalid="!!error"
       :disabled="isLoading"
@@ -23,8 +23,11 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useDocumentSearch } from 'documents/composables/useDocumentSearch'
 import styles from './styles.module.scss'
+
+const { t } = useI18n()
 
 const searchInput = ref<HTMLInputElement>()
 

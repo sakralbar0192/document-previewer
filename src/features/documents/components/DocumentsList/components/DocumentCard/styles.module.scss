@@ -1,0 +1,65 @@
+
+@use '@/styles/variables' as *;
+@use "@/styles/mixins" as *;
+
+.document-card {
+  display: flex;
+  height: 70px;
+  border: 1px solid $color-border-secondary;
+  background: $color-bg-secondary;
+  border-radius: $border-radius-md;
+  overflow: hidden;
+
+  &__image {
+    @include flex-center;
+
+    min-width: 70px;
+    min-height: 70px;
+    overflow: hidden;
+
+    img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+    }
+  }
+
+  &__placeholder svg {
+    fill: $color-text-muted;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px;
+    flex-grow: 1;
+    border-left: 1px solid $color-border-secondary;
+  }
+
+  &__title {
+    h3 {
+      @include ellipsis-text;
+
+      max-width: 120px;
+    }
+
+    margin-bottom: 6px;
+  }
+
+  &__size {
+    color: $color-text-muted;
+    font-size: $font-size-sm;
+  }
+
+  &--active {
+    .document-card__content {
+      background: $color-primary;
+      color: white;
+    }
+
+    .document-card__size {
+      color: white;
+    }
+  }
+}

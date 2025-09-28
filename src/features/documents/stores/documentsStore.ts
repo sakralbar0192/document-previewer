@@ -11,7 +11,7 @@ export const useDocumentsStore = defineStore('documents', () => {
   const error = ref<string | null>(null)
 
   const hasSelectedDocumentImage = computed(() => {
-    return selectedDocument.value?.image !== null
+    return selectedDocument.value?.image !== null && selectedDocument.value?.image !== undefined
   })
 
   const searchDocuments = async(query: string) => {

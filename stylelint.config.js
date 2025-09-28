@@ -4,7 +4,7 @@ export default {
   ],
   plugins: ['stylelint-order'],
   rules: {
-    'selector-class-pattern': '^[a-z][a-zA-Z0-9]*(-[a-z][a-zA-Z0-9]*)*$',
+    'selector-class-pattern': '^[a-z][a-zA-Z0-9]*(-[a-zA-Z0-9]+)*(__[a-zA-Z0-9]+(-[a-zA-Z0-9]+)*)*(--[a-zA-Z0-9]+(-[a-zA-Z0-9]+)*)*$|^[a-z][a-zA-Z0-9]*(-[a-zA-Z0-9]+)*$',
     'custom-property-pattern': null,
     'property-no-unknown': [
       true,
