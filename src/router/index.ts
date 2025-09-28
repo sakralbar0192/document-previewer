@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { i18n } from '@/plugins/i18n'
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(import.meta.env.DEV ? '/' : '/document-previewer/'),
   routes: [
     {
       path: '/',

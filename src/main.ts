@@ -34,6 +34,12 @@ async function initializeApp() {
   app.mount('#app')
 }
 
+// Debug информация
+// eslint-disable-next-line no-console
+console.log('App initialization started')
+console.log('Environment:', import.meta.env.MODE)
+console.log('Base URL:', import.meta.url)
+
 // Запускаем инициализацию
 initializeApp().catch((error) => {
   // eslint-disable-next-line no-console
