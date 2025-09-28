@@ -4,7 +4,7 @@
       <AsideBlock/>
     </template>
     <template #content>
-      <DocumentPreview :document="null"/>
+      <DocumentPreview/>
     </template>
   </DefaultLayout>
 </template>

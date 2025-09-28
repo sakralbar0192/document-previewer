@@ -1,4 +1,4 @@
-import { ref, computed, onUnmounted, nextTick } from 'vue'
+import { ref, computed, onUnmounted, nextTick, onMounted } from 'vue'
 import { useDocumentsStore } from '../stores/documentsStore'
 
 export interface UseDocumentSearchOptions {
@@ -17,12 +17,6 @@ export function useDocumentSearch(options: UseDocumentSearchOptions = {}) {
 
   const isLoading = computed(() => documentsStore.isLoading)
   const error = computed(() => documentsStore.error)
-
-  onUnmounted(() => {
-    if (debounceTimer.value) {
-      clearTimeout(debounceTimer.value)
-    }
-  })
 
   const debouncedSearch = (query: string) => {
     if (debounceTimer.value) {
@@ -88,6 +82,19 @@ export function useDocumentSearch(options: UseDocumentSearchOptions = {}) {
   const handleBlur = () => {
     blurSearch()
   }
+
+  onMounted(() => {
+    searchQuery.value = documentsStore.searchQuery
+    if (searchQuery.value) {
+      immediateSearch()
+    }
+  })
+
+  onUnmounted(() => {
+    if (debounceTimer.value) {
+      clearTimeout(debounceTimer.value)
+    }
+  })
 
   return {
     searchQuery,

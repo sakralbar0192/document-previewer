@@ -1,14 +1,14 @@
-/* Flexbox utilities */
+@use '@/styles/variables' as *;
+
 @mixin flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Focus utilities for accessibility */
 @mixin focus-visible {
   &:focus-visible {
-    outline: 2px solid var(--color-primary);
+    outline: 2px solid $color-primary;
     outline-offset: 2px;
   }
 }

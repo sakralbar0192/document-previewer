@@ -13,7 +13,13 @@
       "list": {
         "title": "Results",
         "no-found": "Nothing was found"
-      }  
+      },
+      "preview": {
+        "download": "Download",
+        "remove": "Remove",
+        "description": "Description",
+        "empty": "Select a document to view its contents."
+      }
     }
   }
 }

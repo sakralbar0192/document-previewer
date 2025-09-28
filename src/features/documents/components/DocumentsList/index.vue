@@ -1,5 +1,5 @@
 <template>
-  <div :class="styles['documents-list']">
+  <div v-if="searchQuery" :class="styles['documents-list']">
     <h2>Documents</h2>
 
     <div v-if="!documents.length" :class="styles['documents-list__empty']">
@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import DocumentCard from './components/DocumentCard/index.vue'
+import DocumentCard from 'documents/components/DocumentCard/index.vue'
 import { computed } from 'vue'
 import { useDocumentsStore } from '../../stores/documentsStore'
 import type { Document } from '../../types/document'
@@ -37,6 +37,7 @@ const documentsStore = useDocumentsStore()
 
 const documents = computed(() => documentsStore.documents)
 const selectedDocument = computed(() => documentsStore.selectedDocument)
+const searchQuery = computed(() => documentsStore.searchQuery)
 
 const selectDocument = (document: Document) => {
   documentsStore.selectDocument(document)

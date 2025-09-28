@@ -1,0 +1,13 @@
+
+@use '@/styles/variables' as *;
+@use "@/styles/mixins" as *;
+
+.document-image {
+  @include flex-center;
+
+  overflow: hidden;
+
+  &__placeholder svg {
+    fill: $color-text-muted;
+  }
+}

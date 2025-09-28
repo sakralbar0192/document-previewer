@@ -30,7 +30,11 @@ export const useDocumentsStore = defineStore('documents', () => {
   }
 
   const selectDocument = (document: Document | null) => {
-    selectedDocument.value = document
+    if (selectedDocument.value?.id === document?.id) {
+      selectedDocument.value = null
+    } else {
+      selectedDocument.value = document
+    }
   }
 
   const deleteDocument = async(id: string) => {
@@ -80,4 +84,8 @@ export const useDocumentsStore = defineStore('documents', () => {
     deleteDocument,
     downloadDocument,
   }
+}, {
+  persist: {
+    pick: ['searchQuery'],
+  },
 })

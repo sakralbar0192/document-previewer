@@ -46,16 +46,10 @@ const {
   }
 })
 
-// Focus management
 const focusInput = () => {
   searchInput.value?.focus()
 }
 
 onMounted(() => { focusInput() })
-
-defineExpose({
-  focusInput,
-  searchQuery
-})
 </script>
 

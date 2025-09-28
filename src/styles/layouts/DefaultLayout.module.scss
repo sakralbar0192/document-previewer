@@ -3,11 +3,12 @@
 .documents-page {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
   max-width: $desktop-max;
   min-width: $mobile-min;
   margin: 0 auto;
   background-color: $color-bg-primary;
+  min-height: 100vh;
+  max-height: 100vh;
 
   @media (max-width: #{$mobile-max}) {
     padding: 24px 16px;

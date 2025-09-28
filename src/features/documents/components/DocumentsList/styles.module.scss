@@ -2,6 +2,7 @@
 @use "@/styles/mixins" as *;
 
 .documents-list {
+  max-height: calc(100vh - 300px);
   overflow-y: auto;
 
   h2 {
@@ -23,13 +24,14 @@
     li {
       @include focus-visible;
 
+      transition: all 0.2s ease;
       cursor: pointer;
 
       &:hover {
         background: $color-bg-secondary;
         border-color: $color-primary;
         transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
+        box-shadow: $shadow-main;
       }
 
       &.active {

@@ -3,24 +3,7 @@
     [styles['document-card--active'] as string]: selectedDocument?.id === document.id
   }]">
     <div :class="styles['document-card__image']">
-      <img
-        v-if="document.image && !imageError"
-        :src="document.image"
-        :alt="document.name"
-        loading="lazy"
-        @error="handleImageError"
-      />
-      <div v-else :class="styles['document-card__placeholder']">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="30"
-          height="30"
-          viewBox="0 0 1920 1536"
-        >
-          <path d="M640 448q0 80-56 136t-136 56t-136-56t-56-136t56-136t136-56t136 56t56 136m1024 384v448H256v-192l320-320l160 160l512-512zm96-704H160q-13 0-22.5 9.5T128 160v1216q0 13 9.5 22.5t22.5 9.5h1600q13 0 22.5-9.5t9.5-22.5V160q0-13-9.5-22.5T1760 128m160 32v1216q0 66-47 113t-113 47H160q-66 0-113-47T0 1376V160Q0 94 47 47T160 0h1600q66 0 113 47t47 113"/>
-        </svg>
-
-      </div>
+      <DocumentImage :src="document.image || ''" :alt="document.name" />
     </div>
     <div :class="styles['document-card__content']">
       <div :class="styles['document-card__title']">
@@ -32,10 +15,11 @@
 </template>
 
 <script setup lang="ts">
-import type { Document } from 'documents/types/document';
+import type { Document } from '@/features/documents/types/document';
 import styles from './styles.module.scss'
 import { useDocumentsStore } from '@/features/documents/stores/documentsStore';
-import { computed, ref } from 'vue';
+import { computed } from 'vue';
+import DocumentImage from 'documents/components/DocumentImage/index.vue';
 
 interface Props {
   document: Document
@@ -43,14 +27,8 @@ interface Props {
 
 const {document} = defineProps<Props>()
 
-const imageError = ref(false)
-
 const documentsStore = useDocumentsStore()
 const selectedDocument = computed(() => documentsStore.selectedDocument)
-
-const handleImageError = () => {
-  imageError.value = true
-}
 
 const calculateFileSize = (text: string): number => {
   // UTF-8 encoding: каждый символ в среднем 1-3 байта

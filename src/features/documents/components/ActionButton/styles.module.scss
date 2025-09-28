@@ -1,0 +1,42 @@
+@use '@/styles/variables' as *;
+@use "@/styles/mixins" as *;
+
+.action-button {
+  @include focus-visible;
+  @include flex-center;
+
+  padding: 7px;
+  border: 1px solid transparent;
+  background: transparent;
+  font-size: $font-size-sm;
+  min-width: 114px;
+  border-radius: $border-radius-sm;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: $shadow-main;
+  }
+
+  &--primary {
+    border-color: $color-primary;
+    color: $color-primary;
+  }
+
+  &--secondary {
+    border-color: $color-secondary;
+    color: $color-secondary;
+
+    &:focus-visible {
+      outline: 2px solid $color-secondary;
+      outline-offset: 2px;
+    }
+  }
+}
