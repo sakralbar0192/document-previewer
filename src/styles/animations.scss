@@ -1,0 +1,90 @@
+// Оптимизированные анимации и transitions
+// GPU-ускоренные миксины для лучших performance
+
+@mixin gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+@mixin smooth-transition($properties...) {
+  $transition: ();
+
+  @each $prop in $properties {
+    $transition: list.append($transition, ($prop $transition-fast), comma);
+  }
+
+  transition: $transition;
+  will-change: $properties;
+}
+
+@mixin hover-lift($offset: -2px) {
+  &:hover {
+    transform: translateY($offset) translateZ(0);
+  }
+}
+
+// Классы для анимированных элементов
+.animated-enter {
+  animation: fade-in-up 0.3s ease-out;
+}
+
+.animated-exit {
+  animation: fade-out-down 0.2s ease-in;
+}
+
+// Keyframes для общих анимаций
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fade-out-down {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  70% {
+    transform: scale3d(0.95, 0.95, 0.95);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}

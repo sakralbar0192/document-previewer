@@ -1,5 +1,6 @@
 @use './fonts';
 @use './variables' as *;
+@use './animations';
 
 html {
   font-family: $font-family-base;

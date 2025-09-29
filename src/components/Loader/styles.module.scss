@@ -7,20 +7,23 @@
 }
 
 .loader-spinner {
-  width: 100%;
-  height: 100%;
-  border: 2px solid $color-border-secondary;
-  border-top: 2px solid $color-primary;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
+   width: 100%;
+   height: 100%;
+   border: 2px solid $color-border-secondary;
+   border-top: 2px solid $color-primary;
+   border-radius: 50%;
+   animation: spin 1s linear infinite;
+   will-change: transform;
+   transform: translateZ(0);
+   backface-visibility: hidden;
 }
 
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
+   0% {
+     transform: rotate3d(0, 0, 1, 0deg);
+   }
 
-  100% {
-    transform: rotate(360deg);
-  }
+   100% {
+     transform: rotate3d(0, 0, 1, 360deg);
+   }
 }

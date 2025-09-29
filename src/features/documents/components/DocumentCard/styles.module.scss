@@ -3,12 +3,21 @@
 @use "@/styles/mixins" as *;
 
 .document-card {
-  display: flex;
-  height: 70px;
-  border: 1px solid $color-border-secondary;
-  background: $color-bg-secondary;
-  border-radius: $border-radius-md;
-  overflow: hidden;
+   display: flex;
+   height: 70px;
+   border: 1px solid $color-border-secondary;
+   background: $color-bg-secondary;
+   border-radius: $border-radius-md;
+   overflow: hidden;
+   transition: border-color $transition-fast, box-shadow $transition-fast, transform $transition-fast;
+   cursor: pointer;
+   will-change: border-color, box-shadow, transform;
+
+   &:hover {
+     border-color: $color-primary;
+     box-shadow: $shadow-main;
+     transform: translateY(-1px) translateZ(0);
+   }
 
   &__image {
     @include flex-center;
@@ -49,13 +58,18 @@
   }
 
   &--active {
+    border-color: $color-primary;
+    box-shadow: 0 0 0 2px rgb(13 110 253 / 20%);
+
     .document-card__content {
       background: $color-primary;
       color: white;
+      transition: background-color $transition-fast, color $transition-fast;
     }
 
     .document-card__size {
       color: white;
+      transition: color $transition-fast;
     }
   }
 }
